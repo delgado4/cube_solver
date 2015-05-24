@@ -178,20 +178,27 @@ void exportToMatlab(double* bwImage, double* gradientArrayX, double* gradientArr
 	fclose(f4);
 }
 
-
-void setupPushButtons() {
+void captureImageData() {
 
 }
 
-void setupCamera() {
-	
+
+void pushbuttons_isr(void* context, unsigned int id) {
+	uint32_t edge_addr = pushbuttons_get_edge_capture();
+	if ((edge_addr & 2) == 1){
+		captureImageData();
+	}
+	pushbuttons_clear_edge_capture();
 }
 
 // Setting up and interfacing with the hardware
 void setupHardware() {
-	setupPushButtons();
-	setupCamera();
+	camera_enable_dma(1);
+	lcd_enable_dma(1);
+	pushbuttons_enable_interrupts(pushbuttons_isr);
 }
+
+
 
 int main(int argc, char *argv[]){
 	

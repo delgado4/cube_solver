@@ -178,6 +178,21 @@ void exportToMatlab(double* bwImage, double* gradientArrayX, double* gradientArr
 	fclose(f4);
 }
 
+
+void setupPushButtons() {
+
+}
+
+void setupCamera() {
+	
+}
+
+// Setting up and interfacing with the hardware
+void setupHardware() {
+	setupPushButtons();
+	setupCamera();
+}
+
 int main(int argc, char *argv[]){
 	
 	// int structPixelSize = sizeof(structPixelSize);

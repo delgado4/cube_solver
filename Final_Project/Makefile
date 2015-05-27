@@ -147,6 +147,7 @@ C_SRCS += C:/Users/delgado4/Documents/GitHub/cube_solver/Final_Project/ee109-lib
 C_SRCS += C:/Users/delgado4/Documents/GitHub/cube_solver/Final_Project/ee109-lib/char_lcd.c
 C_SRCS += C:/Users/delgado4/Documents/GitHub/cube_solver/Final_Project/ee109-lib/lcd.c
 C_SRCS += C:/Users/delgado4/Documents/GitHub/cube_solver/Final_Project/ee109-lib/pushbuttons.c
+C_SRCS += C:/Users/delgado4/Documents/GitHub/cube_solver/Final_Project/ee109-lib/vga.c
 C_SRCS += C:/Users/delgado4/Documents/GitHub/cube_solver/Final_Project/system_globals.c
 C_SRCS += C:/Users/delgado4/Documents/GitHub/cube_solver/Final_Project/test_image.c
 CXX_SRCS :=

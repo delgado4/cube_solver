@@ -37,4 +37,8 @@ void extractCorners(int* mMatrixBinary, int* upperCorner,
 void exportToMatlab(double* bwImage, double* gradientArrayX, double* gradientArrayY, 
 						int* mMatrixBinary);
 
+void displayImage(double *matrix);
+
+void displayColorImage(struct pixel *matrix);
+
 #endif /* __CUBE_SOLVER_H__ */

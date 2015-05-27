@@ -10,6 +10,7 @@
 #include "ee109-lib/camera.h"
 #include "ee109-lib/pushbuttons.h"
 #include "ee109-lib/colors.h"
+#include "ee109-lib/vga.h"
 #include <string.h>
 
 #define LCD_RES_X  400
@@ -227,7 +228,7 @@ void exportToMatlab(double* bwImage, double* gradientArrayX, double* gradientArr
 
 void captureImageData() {
 	int rowNum = 0;
-	int yOffset = 10;
+	int yOffset = 9;
 
 	printf("C");
 
@@ -266,9 +267,43 @@ void setupHardware() {
 	lcd_enable_dma(1);
 	//lcd_draw_rectangle(0, 0, LCD_RES_X, LCD_RES_Y, GREEN);
 	pushbuttons_enable_interrupts(pushbuttons_isr);
+
+	vga_enable_dma(1);
+	vga_draw_rectangle(0, 0, LCD_RES_X, LCD_RES_Y, BLACK);
 }
 
+void displayImage(double *matrix){
+	int i;
+	int j;
 
+	volatile short *vga_front_buffer = (volatile short *)VGA_DEFAULT_FRONT_BUFF_BASE;
+
+	short max_val = 0xF;
+	short pixel;
+	for(j = 0; j < VGA_RES_Y; j++){
+		for(i = 0; i < VGA_RES_X; i++){
+			pixel = (short)(matrix[j*LCD_RES_X + i] * max_val);
+			vga_front_buffer[(j << 9) + i] = pixel;
+		}
+	}
+}
+
+void displayColorImage(struct pixel *matrix){
+	int i;
+	int j;
+
+	volatile short *vga_front_buffer = (volatile short *)VGA_DEFAULT_FRONT_BUFF_BASE;
+
+	struct pixel p;
+	short pixel;
+	for(j = 0; j < VGA_RES_Y; j++){
+		for(i = 0; i < VGA_RES_X; i++){
+			p = matrix[j*LCD_RES_X + i];
+			pixel = (((uint16_t) p.red) << 11) | (((uint16_t) p.green) << 5) | (uint16_t) p.blue;
+			vga_front_buffer[(j << 9) + i] = pixel;
+		}
+	}
+}
 
 int main(int argc, char *argv[]){
 	
@@ -285,7 +320,12 @@ int main(int argc, char *argv[]){
 	// struct pixel originalImage[LCD_RES_X * LCD_RES_Y];
 
 	double bwImage[LCD_RES_X * LCD_RES_Y];
+	displayColorImage(originalImage);
 	bwConversion(originalImage, bwImage);
+
+	//Debug
+	displayImage(bwImage);
+
 	int mMatrixBinary[LCD_RES_X * LCD_RES_Y];
 	double gradientArrayX[LCD_RES_X * LCD_RES_Y];
 	double gradientArrayY[LCD_RES_X * LCD_RES_Y];

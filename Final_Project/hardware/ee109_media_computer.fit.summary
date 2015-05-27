@@ -1,0 +1,16 @@
+Fitter Status : Successful - Sun Apr 12 23:31:12 2015
+Quartus II 32-bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
+Revision Name : ee109_media_computer
+Top-level Entity Name : ee109_media_computer
+Family : Cyclone IV E
+Device : EP4CE115F29C7
+Timing Models : Final
+Total logic elements : 26,905 / 114,480 ( 24 % )
+    Total combinational functions : 22,497 / 114,480 ( 20 % )
+    Dedicated logic registers : 17,735 / 114,480 ( 15 % )
+Total registers : 18256
+Total pins : 453 / 529 ( 86 % )
+Total virtual pins : 0
+Total memory bits : 436,357 / 3,981,312 ( 11 % )
+Embedded Multiplier 9-bit elements : 21 / 532 ( 4 % )
+Total PLLs : 3 / 4 ( 75 % )

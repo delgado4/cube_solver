@@ -1,6 +1,9 @@
-#ifndef __CAMERA_H__
-#define __CAMERA_H__
+#ifndef __CUBE_SOLVER_H__
+#define __CUBE_SOLVER_H__
 
+#include "inttypes.h"
+
+#define NUM_BYTES_PER_PIXEL 2
 // Body of header goes here.
 
 struct pixel {
@@ -28,13 +31,10 @@ double determinant(double* mat);
 
 int computeScoresAndThreshold(double* mMatrix);
 
-void computePixelScores(double* gradientArrayX, double* gradientArrayY, 
-						int* mMatrixBinary);
-
 void extractCorners(int* mMatrixBinary, int* upperCorner,
 					int* lowerCorner);
 
 void exportToMatlab(double* bwImage, double* gradientArrayX, double* gradientArrayY, 
 						int* mMatrixBinary);
 
-#endif /* __CAMERA_H__ */
+#endif /* __CUBE_SOLVER_H__ */

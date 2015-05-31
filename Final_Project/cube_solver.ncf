@@ -12,13 +12,12 @@
         <type>BSP</type>
         <options>
             <source_files>
-                <source_file filepath="true">cube_solver.c</source_file>
-                <source_file filepath="true">system_globals.c</source_file>
-                <source_file filepath="true">test_image.c</source_file>
                 <source_file filepath="true">ee109-lib\camera.c</source_file>
-                <source_file filepath="true">ee109-lib\char_lcd.c</source_file>
                 <source_file filepath="true">ee109-lib\lcd.c</source_file>
                 <source_file filepath="true">ee109-lib\pushbuttons.c</source_file>
+                <source_file filepath="true">ee109-lib\vga.c</source_file>
+                <source_file filepath="true">cube_solver.c</source_file>
+                <source_file filepath="true">system_globals.c</source_file>
             </source_files>
             <bsp_settings_tcl_script filepath="true"/>
         </options>

@@ -12,6 +12,7 @@
 #include "ee109-lib/colors.h"
 #include "ee109-lib/vga.h"
 #include <string.h>
+#include <time.h>
 
 #define LCD_RES_X  400
 #define LCD_RES_Y  240
@@ -62,11 +63,11 @@ void bwConversion(struct pixel* originalImage, double* bwImage){
 
 // Function that computes the gradient matrix
 void convolutionFn(double* bwImage, int* sobelArray, double* gradientArray){
-	printf("convolution");
+	printf("convolution\n");
 	int j;
 	int i;
 	for(j = 2; j < LCD_RES_Y; j++){
-		if (j%20 == 0) printf("convolution row %d\0", j);
+		//if (j%20 == 0) printf("convolution row %d\0", j);
 		for(i = 2; i < LCD_RES_X; i++){
 			// printf("bwConversion col %d", i);
 			gradientArray[j*LCD_RES_X + i] = sobelArray[0]*bwImage[j*LCD_RES_X + i] + sobelArray[1]*bwImage[j*LCD_RES_X + i-1] + sobelArray[2]*bwImage[j*LCD_RES_X + i-2] + 
@@ -106,7 +107,7 @@ void computePixelScores(double* gradientArrayX, double* gradientArrayY,
 	int j;
 	int i;
 	for (j = 2; j < LCD_RES_Y - 2; j++){
-		if (j%20 == 0) printf("pixel scores row %d\0", j);
+		//if (j%20 == 0) printf("pixel scores row %d\0", j);
 		for (i = 2; i < LCD_RES_X - 2; i++){
 			double mMatrix[NUM_SCORES];
 			int currIndex = j*LCD_RES_X + i;
@@ -134,14 +135,16 @@ void computePixelScores(double* gradientArrayX, double* gradientArrayY,
 
 void extractCorners(int* mMatrixBinary, int* upperCorner,
 					int* lowerCorner){
-		printf("extract corners\n");
+	printf("I\n");
+	printf("extract corners\n");
 
 	int minSum = MAX_INT;
 	int maxSum = MIN_INT;
 	int j;
 	int i;
 	for (j = 5; j < LCD_RES_Y - 5; j++) {
-		 printf("extract corners %d\0", j);
+		//printf("%c\n", 'J' + j);
+		//if (j%20 == 0) printf("extract corners %d\0", j);
 		for (i = 5; i < LCD_RES_X - 5; i++) {
 			int currIndex = j * LCD_RES_X + i;
 			if (mMatrixBinary[currIndex] && (i+j) < minSum) {
@@ -230,7 +233,7 @@ void captureImageData() {
 	int rowNum = 0;
 	int yOffset = 9;
 
-	printf("C");
+	printf("C\n");
 
     for (rowNum; rowNum < LCD_RES_Y; rowNum++){
         memcpy(pixelData, 
@@ -245,17 +248,17 @@ void captureImageData() {
     }	
     char_lcd_write("Snapshot taken\0");
     imageCaptured = 1;
-    printf("D");
+    printf("D\n");
 
 }
 
 
 void pushbuttons_isr(void* context, unsigned int id) {
-	printf("A");
+	printf("A\n");
 	uint32_t edge_addr = pushbuttons_get_edge_capture();
 	printf("%x", (int) edge_addr);
 	if (edge_addr == 2){
-		printf("B");
+		printf("B\n");
 		captureImageData();
 	}
 	pushbuttons_clear_edge_capture();
@@ -308,37 +311,71 @@ void displayColorImage(struct pixel *matrix){
 int main(int argc, char *argv[]){
 	
 	// int structPixelSize = sizeof(structPixelSize);
+	time_t t0;
+	time_t t1;
+	time_t t2;
+	time_t t3;
+	time_t t4;
+	time_t t5;
 
 	setupHardware();
 
-	printf("Waiting to acquire image\0");
+	printf("Waiting to acquire image\n\0");
 	while(!imageCaptured){}
-	printf("Image acquired\0");
+	printf("Image acquired\n\0");
 
 	struct pixel* originalImage = (struct pixel*) capturedImage;
 
 	// struct pixel originalImage[LCD_RES_X * LCD_RES_Y];
 
+	time(&t0);
+
 	double bwImage[LCD_RES_X * LCD_RES_Y];
-	displayColorImage(originalImage);
+
+	//displayColorImage(originalImage);
 	bwConversion(originalImage, bwImage);
 
+	time(&t1);
+	printf("BW Conversion took %f seconds\n", difftime(t1, t0));
+	
 	//Debug
-	displayImage(bwImage);
-
+	//displayImage(bwImage);
+printf("E\n");
 	int mMatrixBinary[LCD_RES_X * LCD_RES_Y];
+
 	double gradientArrayX[LCD_RES_X * LCD_RES_Y];
+
 	double gradientArrayY[LCD_RES_X * LCD_RES_Y];
 
 	convolutionFn(bwImage, SOBEL_ARRAY_X, gradientArrayX);
+
+	time(&t2);
+	printf("1st Convolution took %f seconds\n", difftime(t2, t1));
+
 	convolutionFn(bwImage, SOBEL_ARRAY_Y, gradientArrayY);
 
+	time(&t3);
+	printf("2nd Convolution took %f seconds\n", difftime(t3, t2));
+
 	computePixelScores(gradientArrayX, gradientArrayY, mMatrixBinary);
+
+
+	time(&t4);
+	double numSecs = difftime(t4, t3);
+	printf("F\n");
+	printf("Pixel scores took %f seconds\n", numSecs);
+printf("G\n");
 	int upperCorner[2];
 	int lowerCorner[2];
+	printf("H\n");
 	extractCorners(mMatrixBinary, upperCorner, lowerCorner);
-	exportToMatlab(bwImage, gradientArrayX, gradientArrayY, 
-						mMatrixBinary);
+
+	time(&t5);
+	printf("Corners took %f seconds\n", difftime(t5, t4));
+
+	
+	/*exportToMatlab(bwImage, gradientArrayX, gradientArrayY, 
+						mMatrixBinary);*/
 	
 
 	printf("Upper 0: %d, Upper 1: %d\n", upperCorner[0], upperCorner[1]);

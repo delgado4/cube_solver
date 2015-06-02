@@ -103,7 +103,7 @@ ACDS_VERSION := 13.0sp1
 # BUILD_NUMBER: 232
 
 SETTINGS_FILE := settings.bsp
-SOPC_FILE := C:/Users/praveen2/Desktop/Lab2/Lab2_Student_Version/ee109_media_computer/hardware/nios_system/nios_system.sopcinfo
+SOPC_FILE := C:/Users/delgado4/Documents/GitHub/cube_solver/Final_Project/hardware/nios_system/nios_system.sopcinfo
 
 #-------------------------------------------------------------------------------
 #                             TOOL & COMMAND DEFINITIONS

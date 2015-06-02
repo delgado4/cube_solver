@@ -2,9 +2,9 @@
  * system.h - SOPC Builder system and BSP software package information
  *
  * Machine generated for CPU 'CPU' in SOPC Builder design 'nios_system'
- * SOPC Builder design path: C:/Users/praveen2/Desktop/Lab2/Lab2_Student_Version/ee109_media_computer/hardware/nios_system/nios_system.sopcinfo
+ * SOPC Builder design path: C:/Users/delgado4/Documents/GitHub/cube_solver/Final_Project/hardware/nios_system/nios_system.sopcinfo
  *
- * Generated: Sun Apr 12 23:38:41 PDT 2015
+ * Generated: Tue Jun 02 05:09:41 PDT 2015
  */
 
 /*
@@ -228,6 +228,7 @@
 #define __ALTERA_UP_AVALON_VIDEO_DMA_CONTROLLER
 #define __ALTERA_UP_FLASH_MEMORY_IP_CORE_AVALON_INTERFACE
 #define __ALTERA_UP_SD_CARD_AVALON_INTERFACE
+#define __CUBE_SOLVER_PERIPHERAL
 
 
 /*
@@ -406,7 +407,7 @@
  */
 
 #define ALT_MODULE_CLASS_LCD_DMA_Controller altera_up_avalon_video_dma_controller
-#define LCD_DMA_CONTROLLER_BASE 0x10003090
+#define LCD_DMA_CONTROLLER_BASE 0x82024d0
 #define LCD_DMA_CONTROLLER_IRQ -1
 #define LCD_DMA_CONTROLLER_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define LCD_DMA_CONTROLLER_NAME "/dev/LCD_DMA_Controller"
@@ -663,7 +664,7 @@
  */
 
 #define ALT_MODULE_CLASS_VGA_DMA_Controller altera_up_avalon_video_dma_controller
-#define VGA_DMA_CONTROLLER_BASE 0x10003020
+#define VGA_DMA_CONTROLLER_BASE 0x82024c0
 #define VGA_DMA_CONTROLLER_IRQ -1
 #define VGA_DMA_CONTROLLER_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define VGA_DMA_CONTROLLER_NAME "/dev/VGA_DMA_Controller"
@@ -683,6 +684,34 @@
 #define VIDEO_IN_DMA_CONTROLLER_NAME "/dev/Video_In_DMA_Controller"
 #define VIDEO_IN_DMA_CONTROLLER_SPAN 16
 #define VIDEO_IN_DMA_CONTROLLER_TYPE "altera_up_avalon_video_dma_controller"
+
+
+/*
+ * cube_solver_peripheral_0_avalon_slave_y configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_cube_solver_peripheral_0_avalon_slave_y cube_solver_peripheral
+#define CUBE_SOLVER_PERIPHERAL_0_AVALON_SLAVE_Y_BASE 0x8202480
+#define CUBE_SOLVER_PERIPHERAL_0_AVALON_SLAVE_Y_IRQ -1
+#define CUBE_SOLVER_PERIPHERAL_0_AVALON_SLAVE_Y_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define CUBE_SOLVER_PERIPHERAL_0_AVALON_SLAVE_Y_NAME "/dev/cube_solver_peripheral_0_avalon_slave_y"
+#define CUBE_SOLVER_PERIPHERAL_0_AVALON_SLAVE_Y_SPAN 32
+#define CUBE_SOLVER_PERIPHERAL_0_AVALON_SLAVE_Y_TYPE "cube_solver_peripheral"
+
+
+/*
+ * cube_solver_peripheral_0_slave configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_cube_solver_peripheral_0_slave cube_solver_peripheral
+#define CUBE_SOLVER_PERIPHERAL_0_SLAVE_BASE 0x82024a0
+#define CUBE_SOLVER_PERIPHERAL_0_SLAVE_IRQ -1
+#define CUBE_SOLVER_PERIPHERAL_0_SLAVE_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define CUBE_SOLVER_PERIPHERAL_0_SLAVE_NAME "/dev/cube_solver_peripheral_0_slave"
+#define CUBE_SOLVER_PERIPHERAL_0_SLAVE_SPAN 32
+#define CUBE_SOLVER_PERIPHERAL_0_SLAVE_TYPE "cube_solver_peripheral"
 
 
 /*
@@ -930,7 +959,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1428905837
+#define SYSID_TIMESTAMP 1433238120
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
 
 #endif /* __SYSTEM_H_ */

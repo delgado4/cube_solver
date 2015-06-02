@@ -1,9 +1,9 @@
 # memory.gdb - GDB memory region definitions
 #
 # Machine generated for CPU 'CPU' in SOPC Builder design 'nios_system'
-# SOPC Builder design path: C:/Users/praveen2/Desktop/Lab2/Lab2_Student_Version/ee109_media_computer/hardware/nios_system/nios_system.sopcinfo
+# SOPC Builder design path: C:/Users/delgado4/Documents/GitHub/cube_solver/Final_Project/hardware/nios_system/nios_system.sopcinfo
 #
-# Generated: Sun Apr 12 22:08:09 PDT 2015
+# Generated: Tue Jun 02 05:09:42 PDT 2015
 
 # DO NOT MODIFY THIS FILE
 #

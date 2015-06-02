@@ -2,11 +2,11 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Apr 12, 2015 11:38:41 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1428907121596</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>C:\Users\praveen2\Desktop\Lab2\Lab2_Student_Version\ee109_media_computer\software\BSP</BspGeneratedLocation>
-        <BspSettingsFile>C:\Users\praveen2\Desktop\Lab2\Lab2_Student_Version\ee109_media_computer\software\BSP\settings.bsp</BspSettingsFile>
-        <SopcDesignFile>C:\Users\praveen2\Desktop\Lab2\Lab2_Student_Version\ee109_media_computer\hardware\nios_system\nios_system.sopcinfo</SopcDesignFile>
+        <BspGeneratedTimeStamp>Jun 2, 2015 5:09:36 AM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1433246976396</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>C:\Users\delgado4\Documents\GitHub\cube_solver\Final_Project\BSP</BspGeneratedLocation>
+        <BspSettingsFile>C:\Users\delgado4\Documents\GitHub\cube_solver\Final_Project\BSP\settings.bsp</BspSettingsFile>
+        <SopcDesignFile>C:\Users\delgado4\Documents\GitHub\cube_solver\Final_Project\hardware\nios_system\nios_system.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>CPU</Cpu>
         <SchemaVersion>1.9</SchemaVersion>
@@ -905,6 +905,30 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>cube_solver_peripheral_0_avalon_slave_y</slaveDescriptor>
+                <addressRange>0x08202480 - 0x0820249F</addressRange>
+                <addressSpan>32</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>cube_solver_peripheral_0_slave</slaveDescriptor>
+                <addressRange>0x082024A0 - 0x082024BF</addressRange>
+                <addressSpan>32</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>VGA_DMA_Controller</slaveDescriptor>
+                <addressRange>0x082024C0 - 0x082024CF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>LCD_DMA_Controller</slaveDescriptor>
+                <addressRange>0x082024D0 - 0x082024DF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>VGA_Char_Buffer_avalon_char_buffer_slave</slaveDescriptor>
                 <addressRange>0x09000000 - 0x09001FFF</addressRange>
                 <addressSpan>8192</addressSpan>
@@ -1031,12 +1055,6 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>VGA_DMA_Controller</slaveDescriptor>
-                <addressRange>0x10003020 - 0x1000302F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
                 <slaveDescriptor>VGA_Char_Buffer_avalon_char_control_slave</slaveDescriptor>
                 <addressRange>0x10003030 - 0x10003037</addressRange>
                 <addressSpan>8</addressSpan>
@@ -1069,12 +1087,6 @@
         <MemoryMap>
                 <slaveDescriptor>Camera_DMA_Controller</slaveDescriptor>
                 <addressRange>0x10003080 - 0x1000308F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>LCD_DMA_Controller</slaveDescriptor>
-                <addressRange>0x10003090 - 0x1000309F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>

@@ -12,11 +12,19 @@ struct pixel {
 	uint8_t blue;
 };
 
+void intFPArray(int *arr, int *fpArr, size_t numElems);
+
+void fpShortToDoubleMatrix(short *fpMat, double *doubleMat);
+
 // Function that turns a colored image to black and white
 void bwConversion(struct pixel* originalImage, double* bwImage);
+void bwConversionFixedPoint(struct pixel *originalImage, short *bwImage);
 
 // Functioh that computes the gradient matrix
 void convolutionFn(double* bwImage, int* sobelArray, double* gradientArray);
+void convolutionFnFP(short* bwImage, int* sobelArray, short* gradientArray);
+
+void productTruncate(int *product, short *trunc_product);
 
 // Function that performs 3 tasks:
 // 1. Compute M matrix
@@ -24,18 +32,28 @@ void convolutionFn(double* bwImage, int* sobelArray, double* gradientArray);
 // 3. Compute filtered scores (to be done in computeScoresAndThreshold)
 void computePixelScores(double* gradientArrayX, double* gradientArrayY, 
 						int* mMatrixBinary);
+void computePixelScoresFP(short* gradientArrayX, short* gradientArrayY, 
+						char* mMatrixBinary);
 
 double trace(double* mat);
+short traceFP(short *mat);
 
 double determinant(double* mat);
+short determinantAbsFP(short *mat);
 
 int computeScoresAndThreshold(double* mMatrix);
+char computeScoresAndThresholdFP(short* mMatrix);
 
 void extractCorners(int* mMatrixBinary, int* upperCorner,
+					int* lowerCorner);
+void extractCornersFP(char* mMatrixBinary, int* upperCorner,
 					int* lowerCorner);
 
 void exportToMatlab(double* bwImage, double* gradientArrayX, double* gradientArrayY, 
 						int* mMatrixBinary);
+
+void exportToMatlabFP(short* bwImage, short* gradientArrayX, short* gradientArrayY, 
+						char* mMatrixBinary);
 
 void displayImage(double *matrix);
 
